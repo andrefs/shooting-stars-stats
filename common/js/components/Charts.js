@@ -112,6 +112,7 @@ class Charts extends Component {
           {x: new Date('2017-07-01'), y:5},
           {x: new Date('2017-08-01'), y:9},
           {x: new Date('2017-09-01'), y:2},
+          {x: new Date('2017-10-01'), y:1},
         ],
         backgroundColor: '#4F81BD',
         yAxisID: 'y-axis-0',
@@ -133,10 +134,14 @@ class Charts extends Component {
           }
         }],
         xAxes: [{
+          offset: true,
           type: 'time',
           time: {
             unit: 'month'
           },
+          ticks: {
+            source: 'data'
+          }
         }]
       }
     };
