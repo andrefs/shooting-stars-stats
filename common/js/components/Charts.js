@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Helmet} from 'react-helmet';
 import {Container, Row, Col} from 'reactstrap';
-import {Scatter, Bar} from 'react-chartjs-2';
+import {Doughnut, Scatter, Bar} from 'react-chartjs-2';
 import css from './Charts.scss';
 import classnames from 'classnames';
 
@@ -174,6 +174,32 @@ class Charts extends Component {
     };
 
 
+    const labels = [];
+    const values = [];
+
+    stats.playersByGender.forEach(x => {
+      labels.push(x.gender);
+      values.push(x.totalPlayers);
+    });
+    const data5 = {
+      datasets: [{
+        data: values,
+        backgroundColor: [
+          '#FF6384',
+          '#36A2EB',
+          '#FFCE56'
+        ],
+        hoverBackgroundColor: [
+          '#FF6384',
+          '#36A2EB',
+          '#FFCE56'
+        ]
+      }],
+      labels
+    };
+
+    const options5 = {};
+
     return (
       <Container>
         <Helmet>
@@ -182,7 +208,7 @@ class Charts extends Component {
 
         <Row>
           <Col lg="6">
-              <h4 className="text-center">Cumulative games played by number of players</h4>
+              <h4 className="text-center">Total players by number of games played</h4>
               <div className="chart players-gamesPlayed">
                   <Scatter data={data1} options={options1} />
               </div>
@@ -204,6 +230,12 @@ class Charts extends Component {
               <h4 className="text-center">Games played over time</h4>
               <div className="chart registeredPlayers-time">
                   <Bar data={data4} options={options4} />
+              </div>
+          </Col>
+          <Col lg="6">
+              <h4 className="text-center">Players gender</h4>
+              <div className="chart player-gender">
+                  <Doughnut data={data5} options={options5} />
               </div>
           </Col>
         </Row>
