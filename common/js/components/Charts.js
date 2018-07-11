@@ -135,6 +135,45 @@ class Charts extends Component {
       }
     };
 
+    const data4 = {
+      datasets: [{
+        label: 'Games played',
+        data: stats.gamesByMonth.map(x => ({
+          x: new Date(x.year+'-'+x.month), y: x.total
+        })),
+        backgroundColor: '#4F81BD',
+        yAxisID: 'y-axis-0',
+        fill: false
+      }]
+    };
+
+    const options4 = {
+      scales: {
+        yAxes: [{
+          position: 'left',
+          'id': 'y-axis-0',
+          ticks: {
+            beginAtZero:true
+          },
+          scaleLabel: {
+            display: true,
+            labelString: 'Games played'
+          }
+        }],
+        xAxes: [{
+          offset: true,
+          type: 'time',
+          time: {
+            unit: 'month'
+          },
+          ticks: {
+            source: 'data'
+          }
+        }]
+      }
+    };
+
+
     return (
       <Container>
         <Helmet>
@@ -159,6 +198,12 @@ class Charts extends Component {
               <h4 className="text-center">Registered players over time</h4>
               <div className="chart registeredPlayers-time">
                   <Bar data={data3} options={options3} />
+              </div>
+          </Col>
+          <Col lg="6">
+              <h4 className="text-center">Games played over time</h4>
+              <div className="chart registeredPlayers-time">
+                  <Bar data={data4} options={options4} />
               </div>
           </Col>
         </Row>

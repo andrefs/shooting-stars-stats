@@ -27,6 +27,10 @@ class ChartsContainer extends Component {
       return <Container />;
     }
 
+    if(!stats.isFetched){
+      return <Container />;
+    }
+
     return (
       <Charts stats={stats}/>
     );
