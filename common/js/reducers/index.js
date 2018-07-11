@@ -2,11 +2,11 @@ import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
 
 // Import your reducers here
-import charts from './charts';
+import stats from './stats';
 
 const rootReducer = combineReducers({
   routing: routerReducer,
-  charts
+  stats
 });
 
 export default rootReducer;

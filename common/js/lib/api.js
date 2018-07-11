@@ -10,24 +10,8 @@ export const fetch = (url, params, ...rest) => {
   return isomorphicFetch( apiUrl + url, {mode: 'cors', ...params}, ...rest);
 };
 
-export const getGameInstance = (...params) => {
-  const url = '/gameInstances/current?userId='+userId;
-  return fetch(url, ...params);
-};
-
-export const postPlayerPick = (pick) => {
-  const url = `/gameInstances/currentTurn/${pick}?userId=`+userId;
-  return fetch(url, {method: 'POST'});
-};
-
-export const createNewGame = () => {
-  const url = '/gameInstances/current?userId='+userId;
-  return fetch(url, {method: 'POST'});
-};
-
-
-export const getBestScores = (...params) => {
-  const url = '/players/bestScores?userId='+userId;
+export const getStats = (...params) => {
+  const url = '/stats';
   return fetch(url, ...params);
 };
 
