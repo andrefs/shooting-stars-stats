@@ -32,7 +32,10 @@ class Charts extends Component {
           scaleLabel: {
             display: true,
             labelString: 'Players'
-          }
+          },
+          ticks: {
+            beginAtZero:true
+          },
         }],
         xAxes: [{
           'id': 'x-axis-0',
