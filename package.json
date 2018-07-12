@@ -146,6 +146,7 @@
     "mocha": "^3.5.0",
     "node-sass": "^4.5.3",
     "postcss-loader": "^2.0.6",
+    "prop-types": "^15.6.2",
     "react": "^15.6.1",
     "react-chartjs-2": "^2.7.2",
     "react-dom": "^15.6.1",

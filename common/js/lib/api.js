@@ -15,3 +15,9 @@ export const getStats = (...params) => {
   return fetch(url, ...params);
 };
 
+
+export const getUsers = (...params) => {
+  const url = '/users';
+  return fetch(url, ...params);
+};
+
