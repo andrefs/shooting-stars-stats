@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {Helmet} from 'react-helmet';
 import {Container, Row, Col} from 'reactstrap';
 import {Doughnut, Scatter, Bar} from 'react-chartjs-2';
+import TitleBar from './TitleBar';
+import FlashContainer from '../containers/FlashContainer';
 import css from './Charts.scss';
 import classnames from 'classnames';
 
@@ -208,6 +210,9 @@ class Charts extends Component {
         <Helmet>
           <title>Charts</title>
         </Helmet>
+
+        <TitleBar title="Charts" />
+        <FlashContainer />
 
         <Row>
           <Col lg="6">

@@ -1,0 +1,56 @@
+
+
+.flashBar {
+  width: 98vw;
+  top: 0;
+  left: 0;
+  position:fixed;
+  color: white;
+  z-index: 5;
+  font-size: 21px;
+}
+
+
+.flashBarItem {
+  h3 {
+    font-size: 35px;
+  }
+  padding: 3vw;
+  height: 15vw;
+  opacity: 0.97;
+}
+
+.flashInfo {
+  background-color: #17a2b8;
+  h3 {
+    color: #ffb937;
+  }
+}
+
+.flashSuccess {
+  background-color: #56ac6a;
+  h3 {
+    color: #911ae6;
+  }
+}
+
+.flashWarning {
+  background-color: #ffc107;
+  h3 {
+    color: #710e17;
+  }
+}
+
+.flashError {
+  background-color: #c94c4c;
+  h3 {
+    color: #ffe453;
+  }
+}
+
+.flashGeneric {
+  background-color: #c9c9c9;
+  h3 {
+    color: #17a2b8;
+  }
+}

@@ -1,0 +1,42 @@
+
+
+.titleVerticalSpace, .titleBar {
+  height: 5vw;
+
+
+  .titleBar {
+    height: 5vw;
+    width: 98vw;
+    left:1vw;
+    top: 1vw;
+
+  }
+
+  display: flex;
+  align-items: center;
+}
+
+
+.titleDiv {
+  width: 50vw;
+  margin: 0 auto 0 auto;
+  bottom: 0;
+
+  h1 {
+    margin-top: 0.5rem;
+
+  }
+}
+
+.logoDiv {
+  left: 0;
+  top: 0;
+
+  position: absolute;
+
+  img {
+    height: 5vw;
+  }
+}
+
+
