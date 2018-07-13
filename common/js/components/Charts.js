@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
 import {Helmet} from 'react-helmet';
 import {Container, Row, Col} from 'reactstrap';
-import {Doughnut, Scatter, Bar} from 'react-chartjs-2';
+import {Doughnut, Bar} from 'react-chartjs-2';
 import TitleBar from './TitleBar';
 import FlashContainer from '../containers/FlashContainer';
 import ScatterChart from './ScatterChart';
+import BarChart from './BarChart';
 import css from './Charts.scss';
 import classnames from 'classnames';
 
@@ -65,43 +66,9 @@ class Charts extends Component {
     //   }
     // };
 
-    const data3 = {
-      datasets: [{
-        label: 'Registered players',
-        data: stats.newUsersByMonth.map(x => ({
-          x: new Date(x.year+'-'+x.month), y: x.total
-        })),
-        backgroundColor: '#4F81BD',
-        yAxisID: 'y-axis-0',
-        fill: false
-      }]
-    };
-
-    const options3 = {
-      scales: {
-        yAxes: [{
-          position: 'left',
-          'id': 'y-axis-0',
-          ticks: {
-            beginAtZero:true
-          },
-          scaleLabel: {
-            display: true,
-            labelString: 'Registered players'
-          }
-        }],
-        xAxes: [{
-          offset: true,
-          type: 'time',
-          time: {
-            unit: 'month'
-          },
-          ticks: {
-            source: 'data'
-          }
-        }]
-      }
-    };
+    const values3 = stats.newUsersByMonth.map(x => ({
+      x: new Date(x.year+'-'+x.month), y: x.total
+    }));
 
     const data4 = {
       datasets: [{
@@ -192,12 +159,12 @@ class Charts extends Component {
               </div>
           </Col>
           */}
-          <Col lg="6">
-              <h4 className="text-center">Registered players over time</h4>
-              <div className="chart registeredPlayers-time">
-                  <Bar data={data3} options={options3} />
-              </div>
-          </Col>
+          <BarChart
+            values={values3}
+            chartClass="registeredPlayers-time"
+            ylabel="Registered players"
+            title="Registered players over time"
+          />
           <Col lg="6">
               <h4 className="text-center">Games played over time</h4>
               <div className="chart registeredPlayers-time">
