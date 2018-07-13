@@ -4,6 +4,7 @@ import {Container, Row, Col} from 'reactstrap';
 import {Doughnut, Scatter, Bar} from 'react-chartjs-2';
 import TitleBar from './TitleBar';
 import FlashContainer from '../containers/FlashContainer';
+import ScatterChart from './ScatterChart';
 import css from './Charts.scss';
 import classnames from 'classnames';
 
@@ -12,45 +13,7 @@ class Charts extends Component {
   render(){
     const {stats} = this.props;
 
-    const data1 = {
-      labels: ['Scatter'],
-      datasets: [
-        {
-          label: 'Players',
-          backgroundColor: '#4F81BD',
-          yAxisID: 'y-axis-0',
-          fill: false,
-
-          data: stats.cumulativeGames.map(x => ({x: x.numGames, y: x.totalPlayers}))
-        }
-      ]
-    };
-
-    const options1 = {
-      scales: {
-        yAxes: [{
-          position: 'left',
-          'id': 'y-axis-0',
-          scaleLabel: {
-            display: true,
-            labelString: 'Players'
-          },
-          ticks: {
-            beginAtZero:true
-          },
-        }],
-        xAxes: [{
-          'id': 'x-axis-0',
-          ticks: {
-            beginAtZero:true
-          },
-          scaleLabel: {
-            display: true,
-            labelString: 'Games played'
-          }
-        }]
-      }
-    };
+    const values1 =  stats.cumulativeGames.map(x => ({x: x.numGames, y: x.totalPlayers}));
 
     // const data2 = {
     //   datasets: [{
@@ -215,12 +178,13 @@ class Charts extends Component {
         <FlashContainer />
 
         <Row>
-          <Col lg="6">
-              <h4 className="text-center">Total players by number of games played</h4>
-              <div className="chart players-gamesPlayed">
-                  <Scatter data={data1} options={options1} />
-              </div>
-          </Col>
+          <ScatterChart
+            values={values1}
+            chartClass="players-gamesPlayed"
+            ylabel="Players"
+            xlabel="Games played"
+            title="Total players by number of games played"
+          />
           {/*<Col lg="6">
               <h4 className="text-center">Cumulative pairs by number of times played</h4>
               <div className="chart pairs-timesPlayed">
