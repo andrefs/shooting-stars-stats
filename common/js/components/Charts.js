@@ -1,11 +1,14 @@
 import React, {Component} from 'react';
 import {Helmet} from 'react-helmet';
 import {Container, Row, Col} from 'reactstrap';
-import {Doughnut, Bar} from 'react-chartjs-2';
+import {Bar} from 'react-chartjs-2';
 import TitleBar from './TitleBar';
+
 import FlashContainer from '../containers/FlashContainer';
 import ScatterChart from './ScatterChart';
+import DoughnutChart from './DoughnutChart';
 import BarChart from './BarChart';
+
 import css from './Charts.scss';
 import classnames from 'classnames';
 
@@ -111,29 +114,10 @@ class Charts extends Component {
 
     const labels = [];
     const values = [];
-
     stats.playersByGender.forEach(x => {
       labels.push(x.gender);
       values.push(x.totalPlayers);
     });
-    const data5 = {
-      datasets: [{
-        data: values,
-        backgroundColor: [
-          '#FF6384',
-          '#36A2EB',
-          '#FFCE56'
-        ],
-        hoverBackgroundColor: [
-          '#FF6384',
-          '#36A2EB',
-          '#FFCE56'
-        ]
-      }],
-      labels
-    };
-
-    const options5 = {};
 
     return (
       <Container>
@@ -171,12 +155,13 @@ class Charts extends Component {
                   <Bar data={data4} options={options4} />
               </div>
           </Col>
-          <Col lg="6">
-              <h4 className="text-center">Players gender</h4>
-              <div className="chart player-gender">
-                  <Doughnut data={data5} options={options5} />
-              </div>
-          </Col>
+          <DoughnutChart
+            values={values}
+            labels={labels}
+            chartClass="player-gender"
+            xlabel="Players gender"
+            title="Players gender"
+          />
         </Row>
       </Container>
     );
