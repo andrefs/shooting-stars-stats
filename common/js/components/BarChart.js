@@ -50,7 +50,7 @@ class BarChart extends Component {
 
     return (
       <Col lg="6">
-          <h4 className="text-center">Registered players over time</h4>
+          <h4 className="text-center">{title}</h4>
           <div className={'chart', chartClass} >
               <Bar data={data} options={options} />
           </div>

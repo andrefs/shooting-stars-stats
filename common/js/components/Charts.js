@@ -70,16 +70,12 @@ class Charts extends Component {
     // };
 
     const values3 = stats.newUsersByMonth.map(x => ({
-      x: new Date(x.year+'-'+x.month), y: x.total
+      x: x.year+'-'+x.month, y: x.total
     }));
 
     const values4 = stats.gamesByMonth.map(x => ({
-      x: new Date(x.year+'-'+x.month), y: x.total
+      x: x.year+'-'+x.month, y: x.gamesPerActiveUser
     }));
-
-
-console.log('XXXXXXXXXXXXXXX values1', values1);
-console.log('XXXXXXXXXXXXXXX values3', values3);
 
     const labels = [];
     const values = [];
@@ -120,9 +116,9 @@ console.log('XXXXXXXXXXXXXXX values3', values3);
           />
           <BarChart
             values={values4}
-            chartClass="registeredPlayers-time"
-            ylabel="Games played"
-            title="Games played over time"
+            chartClass="gamesPlayed-time"
+            ylabel="Average games played"
+            title="Average games played over time"
           />
           <DoughnutChart
             values={values}
