@@ -17,72 +17,33 @@ class Charts extends Component {
   render(){
     const {stats} = this.props;
 
-    const values1 =  stats.cumulativeGames.map(x => ({x: x.numGames, y: x.totalPlayers}));
+    let values1, values2, values3, values4;
+    if(stats.cumulativeGames){
+      values1 =  stats.cumulativeGames.map(x => ({x: x.numGames, y: x.totalPlayers}));
+    }
 
-    // const data2 = {
-    //   datasets: [{
-    //     label: 'Pairs',
-    //     data: [
-    //       {x: 1, y:100},
-    //       {x: 2, y:70},
-    //       {x: 3, y:50},
-    //       {x: 4, y:35},
-    //       {x: 5, y:25},
-    //       {x: 6, y:18},
-    //       {x: 7, y:14},
-    //       {x: 8, y:11},
-    //       {x: 9, y:9},
-    //       {x:10, y:8},
-    //       {x:11, y:7},
-    //       {x:12, y:6},
-    //       {x:13, y:6},
-    //     ],
-    //     backgroundColor: '#4F81BD',
-    //     yAxisID: 'y-axis-0',
-    //     fill: false
-    //   }]
-    // };
+    if(stats.newUsersByMonth){
+      values3 = stats.newUsersByMonth.map(x => ({
+        x: x.year+'-'+x.month, y: x.total
+      }));
+    }
 
-    // const options2 = {
-    //   scales: {
-    //     yAxes: [{
-    //       position: 'left',
-    //       'id': 'y-axis-0',
-    //       ticks: {
-    //         beginAtZero:true
-    //       },
-    //       scaleLabel: {
-    //         display: true,
-    //         labelString: 'Pairs'
-    //       }
-    //     }],
-    //     xAxes: [{
-    //       'id': 'x-axis-0',
-    //       ticks: {
-    //         beginAtZero:true
-    //       },
-    //       scaleLabel: {
-    //         display: true,
-    //         labelString: 'Times played'
-    //       }
-    //     }]
-    //   }
-    // };
+    if(stats.gamesByMonth){
+      values4 = stats.gamesByMonth.map(x => ({
+        x: x.year+'-'+x.month, y: x.gamesPerActiveUser
+      }));
+    }
 
-    const values3 = stats.newUsersByMonth.map(x => ({
-      x: x.year+'-'+x.month, y: x.total
-    }));
-
-    const values4 = stats.gamesByMonth.map(x => ({
-      x: x.year+'-'+x.month, y: x.gamesPerActiveUser
-    }));
-
-    const labels = [];
-    const values = [];
-    stats.playersByGender.forEach(x => {
-      labels.push(x.gender);
-      values.push(x.totalPlayers);
-    });
+    let labels = [];
+    let values = [];
+    if(stats.playersByGender){
+      labels = [];
+      values = [];
+      stats.playersByGender.forEach(x => {
+        labels.push(x.gender);
+        values.push(x.totalPlayers);
+      });
+    }
 
     return (
       <Container>
@@ -94,13 +55,16 @@ class Charts extends Component {
         <FlashContainer />
 
         <Row>
-          <ScatterChart
-            values={values1}
-            chartClass="players-gamesPlayed"
-            ylabel="Players"
-            xlabel="Games played"
-            title="Total players by number of games played"
-          />
+          {values1 ?
+            <ScatterChart
+              values={values1}
+              chartClass="players-gamesPlayed"
+              ylabel="Players"
+              xlabel="Games played"
+              title="Total players by number of games played"
+            />
+            : null
+          }
           {/*<Col lg="6">
               <h4 className="text-center">Cumulative pairs by number of times played</h4>
               <div className="chart pairs-timesPlayed">
@@ -108,25 +72,34 @@ class Charts extends Component {
               </div>
           </Col>
           */}
-          <BarChart
-            values={values3}
-            chartClass="registeredPlayers-time"
-            ylabel="Registered players"
-            title="Registered players over time"
-          />
-          <BarChart
-            values={values4}
-            chartClass="gamesPlayed-time"
-            ylabel="Average games played"
-            title="Average games played over time"
-          />
-          <DoughnutChart
-            values={values}
-            labels={labels}
-            chartClass="player-gender"
-            xlabel="Players gender"
-            title="Players gender"
-          />
+          {values3 ?
+            <BarChart
+              values={values3}
+              chartClass="registeredPlayers-time"
+              ylabel="Registered players"
+              title="Registered players over time"
+            />
+            : null
+          }
+          {values4 ?
+            <BarChart
+              values={values4}
+              chartClass="gamesPlayed-time"
+              ylabel="Average games played"
+              title="Average games played over time"
+            />
+            : null
+          }
+          {values ?
+            <DoughnutChart
+              values={values}
+              labels={labels}
+              chartClass="player-gender"
+              xlabel="Players gender"
+              title="Players gender"
+            />
+            : null
+          }
         </Row>
       </Container>
     );
