@@ -78,6 +78,7 @@ class Charts extends Component {
               chartClass="registeredPlayers-time"
               ylabel="Registered players"
               title="Registered players over time"
+              stepSize="1"
             />
             : null
           }

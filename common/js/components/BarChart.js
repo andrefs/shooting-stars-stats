@@ -8,7 +8,7 @@ import classnames from 'classnames';
 class BarChart extends Component {
 
   render(){
-    const {values, xlabel, ylabel, chartClass, title} = this.props;
+    const {values, xlabel, ylabel, chartClass, title, stepSize} = this.props;
 
 
     const data = {
@@ -27,7 +27,8 @@ class BarChart extends Component {
           position: 'left',
           'id': 'y-axis-0',
           ticks: {
-            beginAtZero:true
+            beginAtZero:true,
+            stepSize: stepSize,
           },
           scaleLabel: {
             display: true,
@@ -41,7 +42,7 @@ class BarChart extends Component {
             unit: 'month'
           },
           ticks: {
-            source: 'data'
+            source: 'data',
           }
         }]
       }
