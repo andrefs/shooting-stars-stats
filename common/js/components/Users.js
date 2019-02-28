@@ -34,7 +34,7 @@ class Users extends Component {
               <tr key={i}>
                 <td>{u.username}</td>
                 <td>{u.totalScore}</td>
-                <td>{u.playedSequences.length}</td>
+                <td>{u.totalGamesPlayed || 0}</td>
               </tr>
             );})}
           </tbody>

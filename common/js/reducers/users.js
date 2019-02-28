@@ -20,6 +20,7 @@ const users = (state = defaultState, action) => {
     case FETCH_USERS_SUCCESS:
       return {
         ...state,
+        error: null,
         data: action.users,
         isFetching: false,
         isFetched: true,

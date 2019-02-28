@@ -62,6 +62,7 @@ class Charts extends Component {
               ylabel="Players"
               xlabel="Games played"
               title="Total players by number of games played"
+              stepSize="10"
             />
             : null
           }
@@ -78,7 +79,7 @@ class Charts extends Component {
               chartClass="registeredPlayers-time"
               ylabel="Registered players"
               title="Registered players over time"
-              stepSize="1"
+              stepSize="100"
             />
             : null
           }
