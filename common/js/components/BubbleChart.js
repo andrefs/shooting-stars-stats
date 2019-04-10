@@ -1,15 +1,15 @@
 import React, {Component} from 'react';
 import {Col} from 'reactstrap';
-import {Scatter} from 'react-chartjs-2';
+import {Bubble} from 'react-chartjs-2';
 import classnames from 'classnames';
 
-class ScatterChart extends Component {
+class BubbleChart extends Component {
 
   render(){
     const {values, xlabel, ylabel, chartClass, title} = this.props;
 
     const data = {
-      labels: ['Scatter'],
+      labels: ['Bubble'],
       datasets: [
         {
           label: ylabel,
@@ -24,7 +24,6 @@ class ScatterChart extends Component {
     const options = {
       scales: {
         yAxes: [{
-          type: 'logarithmic',
           position: 'left',
           'id': 'y-axis-0',
           scaleLabel: {
@@ -52,11 +51,11 @@ class ScatterChart extends Component {
       <Col lg="6">
           <h4 className="text-center">{title}</h4>
           <div className={'chart', chartClass} >
-              <Scatter data={data} options={options} />
+              <Bubble data={data} options={options} />
           </div>
       </Col>
     );
   }
 }
 
-export default ScatterChart;
+export default BubbleChart;

@@ -8,6 +8,7 @@ import FlashContainer from '../containers/FlashContainer';
 import ScatterChart from './ScatterChart';
 import DoughnutChart from './DoughnutChart';
 import BarChart from './BarChart';
+import BubbleChart from './BubbleChart';
 
 import css from './Charts.scss';
 import classnames from 'classnames';
@@ -17,32 +18,37 @@ class Charts extends Component {
   render(){
     const {stats} = this.props;
 
-    let values1, values2, values3, values4;
+    let playersByGender, cumulativeGames, newUsersByMonth, gamesByMonth, distCertaintySupport;
     if(stats.cumulativeGames){
-      values1 =  stats.cumulativeGames.map(x => ({x: x.numGames, y: x.totalPlayers}));
+      cumulativeGames =  stats.cumulativeGames.map(x => ({x: x.numGames, y: x.totalPlayers}));
     }
 
     if(stats.newUsersByMonth){
-      values3 = stats.newUsersByMonth.map(x => ({
-        x: x.year+'-'+x.month, y: x.total
+      newUsersByMonth = stats.newUsersByMonth.map(x => ({
+        x: x.year+'-'+('0'+x.month).slice(-2), y: x.total
       }));
     }
 
     if(stats.gamesByMonth){
-      values4 = stats.gamesByMonth.map(x => ({
+      gamesByMonth = stats.gamesByMonth.map(x => ({
         x: x.year+'-'+x.month, y: x.gamesPerActiveUser
       }));
     }
 
     let labels = [];
-    let values = [];
     if(stats.playersByGender){
       labels = [];
-      values = [];
+      playersByGender = [];
       stats.playersByGender.forEach(x => {
         labels.push(x.gender);
-        values.push(x.totalPlayers);
+        playersByGender.push(x.totalPlayers);
       });
+    }
+
+    if(stats.distCertaintySupport){
+      distCertaintySupport = stats.distCertaintySupport.map(x => ({
+        x: x.certainty, y: x.support, r: x.total
+      }));
     }
 
     return (
@@ -55,9 +61,9 @@ class Charts extends Component {
         <FlashContainer />
 
         <Row>
-          {values1 ?
+          {cumulativeGames ?
             <ScatterChart
-              values={values1}
+              values={cumulativeGames}
               chartClass="players-gamesPlayed"
               ylabel="Players"
               xlabel="Games played"
@@ -73,9 +79,10 @@ class Charts extends Component {
               </div>
           </Col>
           */}
-          {values3 ?
+          {newUsersByMonth ?
             <BarChart
-              values={values3}
+              values={newUsersByMonth}
+              labels={newUsersByMonth.map(x => x.x).sort()}
               chartClass="registeredPlayers-time"
               ylabel="Registered players"
               title="Registered players over time"
@@ -83,22 +90,33 @@ class Charts extends Component {
             />
             : null
           }
-          {values4 ?
+          {gamesByMonth ?
             <BarChart
-              values={values4}
+              values={gamesByMonth}
               chartClass="gamesPlayed-time"
+              labels={gamesByMonth.map(x => x.x).sort()}
               ylabel="Average games played"
-              title="Average games played over time"
+              title="Average games by player"
             />
             : null
           }
-          {values ?
+          {playersByGender ?
             <DoughnutChart
-              values={values}
+              values={playersByGender}
               labels={labels}
               chartClass="player-gender"
               xlabel="Players gender"
               title="Players gender"
+            />
+            : null
+          }
+          {distCertaintySupport ?
+            <BubbleChart
+              values={distCertaintySupport}
+              chartClass="dist-certainty-support"
+              xlabel="Certainty"
+              ylabel="Support"
+              title="Certainty and Support"
             />
             : null
           }

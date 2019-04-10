@@ -8,7 +8,7 @@ import classnames from 'classnames';
 class BarChart extends Component {
 
   render(){
-    const {values, xlabel, ylabel, chartClass, title, stepSize} = this.props;
+    const {values, xlabel, ylabel, chartClass, title, stepSize, labels} = this.props;
 
 
     const data = {
@@ -37,10 +37,8 @@ class BarChart extends Component {
         }],
         xAxes: [{
           offset: true,
-          type: 'time',
-          time: {
-            unit: 'month'
-          },
+          type: 'category',
+          labels: labels,
           ticks: {
             source: 'data',
           }
