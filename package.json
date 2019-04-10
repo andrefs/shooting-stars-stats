@@ -1,7 +1,7 @@
 {
   "name": "shooting-stars-stats",
   "description": "Admin and stats UI for Shooting Stars",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "license": "MIT",
   "main": "client/index.js",
   "repository": {
