@@ -14,9 +14,7 @@ export const fetchPairs = () => {
     try {
       const response = await getOrderedPairs();
       const json = await response.json();
-      console.log('XXXXXXXXX 999 fetchPairs json', json);
       const pairs = json.docs;
-      console.log('XXXXXXXXX 999 fetchPairs pairs', pairs);
 
       dispatch(fetchPairsSuccess(pairs));
     } catch (e) {

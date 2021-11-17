@@ -23,8 +23,7 @@
     "test:all": "better-npm-run test:all",
     "test:watch": "better-npm-run test:watch",
     "test:all:watch": "better-npm-run test:all:watch",
-    "lint": "better-npm-run lint",
-    "postinstall": "node ./postinstall.js"
+    "lint": "better-npm-run lint"
   },
   "betterScripts": {
     "dev:start": "yarn run dev:start:client & yarn run dev:start:server",

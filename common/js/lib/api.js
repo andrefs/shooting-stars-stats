@@ -18,14 +18,12 @@ export const getStats = (...params) => {
 
 
 export const getUsers = (...params) => {
-  console.log('XXXXXXXXXXXX getUsers');
   const url = '/users?token=ichbintherealOG';
   return fetch(url, ...params);
 };
 
 
 export const getOrderedPairs = (...params) => {
-  console.log('XXXXXXXXXXXX getPairs');
   const url = '/pairs?limit=100&orderedOnly=true&includeItems=true&token=ichbintherealOG';
   return fetch(url, ...params);
 };

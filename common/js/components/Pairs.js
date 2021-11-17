@@ -5,8 +5,6 @@ import TitleBar from './TitleBar';
 import FlashContainer from '../containers/FlashContainer';
 import process from 'process';
 
-console.log('XXXXXXXXXXXXXXX PROCESS', process.env.API_BASE_URL);
-
 class Pairs extends Component {
 
   render(){
