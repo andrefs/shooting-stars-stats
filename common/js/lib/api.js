@@ -1,6 +1,7 @@
 import isomorphicFetch from 'isomorphic-fetch';
 
-const apiUrl = 'http://localhost:15111';
+//const apiUrl = 'http://localhost:15111';
+const apiUrl = 'https://stars-api.andrefs.com';
 //const userId = '5af61777396666c67abc4707'; // user1
 const userId = '5afc549d2904cc717e1090a4'; // user2
 
@@ -11,13 +12,21 @@ export const fetch = (url, params, ...rest) => {
 };
 
 export const getStats = (...params) => {
-  const url = '/stats';
+  const url = '/stats?token=ichbintherealOG';
   return fetch(url, ...params);
 };
 
 
 export const getUsers = (...params) => {
-  const url = '/users';
+  console.log('XXXXXXXXXXXX getUsers');
+  const url = '/users?token=ichbintherealOG';
+  return fetch(url, ...params);
+};
+
+
+export const getOrderedPairs = (...params) => {
+  console.log('XXXXXXXXXXXX getPairs');
+  const url = '/pairs?limit=100&orderedOnly=true&includeItems=true&token=ichbintherealOG';
   return fetch(url, ...params);
 };
 

@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {Col} from 'reactstrap';
 import {Scatter} from 'react-chartjs-2';
-import classnames from 'classnames';
 
 class ScatterChart extends Component {
 
@@ -50,10 +49,10 @@ class ScatterChart extends Component {
 
     return (
       <Col lg="6">
-          <h4 className="text-center">{title}</h4>
-          <div className={'chart', chartClass} >
-              <Scatter data={data} options={options} />
-          </div>
+        <h4 className="text-center">{title}</h4>
+        <div className={'chart', chartClass} >
+          <Scatter data={data} options={options} />
+        </div>
       </Col>
     );
   }

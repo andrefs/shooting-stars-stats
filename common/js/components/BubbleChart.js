@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {Col} from 'reactstrap';
 import {Bubble} from 'react-chartjs-2';
-import classnames from 'classnames';
 
 class BubbleChart extends Component {
 
@@ -49,10 +48,10 @@ class BubbleChart extends Component {
 
     return (
       <Col lg="6">
-          <h4 className="text-center">{title}</h4>
-          <div className={'chart', chartClass} >
-              <Bubble data={data} options={options} />
-          </div>
+        <h4 className="text-center">{title}</h4>
+        <div className={'chart', chartClass} >
+          <Bubble data={data} options={options} />
+        </div>
       </Col>
     );
   }

@@ -3,36 +3,41 @@ import {Helmet} from 'react-helmet';
 import {Container, Table} from 'reactstrap';
 import TitleBar from './TitleBar';
 import FlashContainer from '../containers/FlashContainer';
+import process from 'process';
 
-class Users extends Component {
+console.log('XXXXXXXXXXXXXXX PROCESS', process.env.API_BASE_URL);
+
+class Pairs extends Component {
 
   render(){
-    const {users} = this.props;
+    const {pairs} = this.props;
 
     return (
       <Container>
         <Helmet>
-          <title>Users</title>
+          <title>Sorted pairs</title>
         </Helmet>
 
-        <TitleBar title="Users" />
+        <TitleBar title="Sorted pairs" />
         <FlashContainer />
 
         <Table striped>
           <thead>
             <tr>
-              <th>Username</th>
-              <th>Score</th>
-              <th>Played games</th>
+              <th>Order</th>
+              <th>Pair ID</th>
+              <th>Item A</th>
+              <th>Item B</th>
             </tr>
           </thead>
           <tbody>
-            {users.data.map((u, i) => {
+            {pairs.data.map((p, i) => {
               return (
                 <tr key={i}>
-                  <td>{u.username}</td>
-                  <td>{u.totalScore}</td>
-                  <td>{u.totalGamesPlayed || 0}</td>
+                  <td>{p.order}</td>
+                  <td>{p.seqNum}</td>
+                  <td>{p.itemA.name}</td>
+                  <td>{p.itemB.name}</td>
                 </tr>
               );})}
           </tbody>
@@ -44,4 +49,4 @@ class Users extends Component {
   }
 }
 
-export default Users;
+export default Pairs;

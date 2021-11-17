@@ -1,14 +1,11 @@
 import React, {Component} from 'react';
-import {Helmet} from 'react-helmet';
 import {Col} from 'reactstrap';
 import {Bar} from 'react-chartjs-2';
-import css from './Charts.scss';
-import classnames from 'classnames';
 
 class BarChart extends Component {
 
   render(){
-    const {values, xlabel, ylabel, chartClass, title, stepSize, labels} = this.props;
+    const {values, ylabel, chartClass, title, stepSize, labels} = this.props;
 
 
     const data = {
@@ -49,10 +46,10 @@ class BarChart extends Component {
 
     return (
       <Col lg="6">
-          <h4 className="text-center">{title}</h4>
-          <div className={'chart', chartClass} >
-              <Bar data={data} options={options} />
-          </div>
+        <h4 className="text-center">{title}</h4>
+        <div className={'chart', chartClass} >
+          <Bar data={data} options={options} />
+        </div>
       </Col>
     );
   }

@@ -1,14 +1,11 @@
 import React, {Component} from 'react';
-import {Helmet} from 'react-helmet';
 import {Col} from 'reactstrap';
 import {Doughnut} from 'react-chartjs-2';
-import css from './Charts.scss';
-import classnames from 'classnames';
 
 class DoughnutChart extends Component {
 
   render(){
-    const {values, labels, xlabel, ylabel, chartClass, title} = this.props;
+    const {values, labels, xlabel, chartClass} = this.props;
 
     const data = {
       datasets: [{

@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {Helmet} from 'react-helmet';
-import {Container, Row, Col} from 'reactstrap';
-import {Bar} from 'react-chartjs-2';
+import {Container, Row} from 'reactstrap';
 import TitleBar from './TitleBar';
 
 import FlashContainer from '../containers/FlashContainer';
@@ -9,9 +8,6 @@ import ScatterChart from './ScatterChart';
 import DoughnutChart from './DoughnutChart';
 import BarChart from './BarChart';
 import BubbleChart from './BubbleChart';
-
-import css from './Charts.scss';
-import classnames from 'classnames';
 
 class Charts extends Component {
 

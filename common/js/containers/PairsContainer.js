@@ -4,33 +4,35 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 
 import {Container} from 'reactstrap';
-import {fetchUsers} from 'actions/users';
-import Users from '../components/Users';
+import {fetchPairs} from 'actions/pairs';
+import Pairs from '../components/Pairs';
 
-class UsersContainer extends Component {
+class PairsContainer extends Component {
 
   componentDidMount() {
-    const {users} = this.props;
+    const {pairs} = this.props;
 
-    if (!users || !users.isFetched) {
-      this.props.fetchUsers();
+    if (!pairs || !pairs.isFetched) {
+      this.props.fetchPairs();
     }
   }
 
-  render() {
-    const {users} = this.props;
 
-    // users are loading
-    if(!users || users.isFetching){
+
+  render() {
+    const {pairs} = this.props;
+
+    // pairs are loading
+    if(!pairs || pairs.isFetching){
       return <Container />;
     }
 
-    if(!users.isFetched){
+    if(!pairs.isFetched){
       return <Container />;
     }
 
     return (
-      <Users users={users}/>
+      <Pairs pairs={pairs}/>
     );
   }
 }
@@ -38,14 +40,14 @@ class UsersContainer extends Component {
 
 const mapStateToProps = state => {
   return {
-    users: state.users
+    pairs: state.pairs
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return bindActionCreators({
-    fetchUsers
+    fetchPairs
   }, dispatch);
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(UsersContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(PairsContainer);
