@@ -9,7 +9,7 @@ ENV NODE_ENV=production
 WORKDIR /app
 
 COPY --chown=node:node ["package.json", "yarn.lock", "postinstall.js", "./"]
-RUN yarn install --frozen-lockfile --production=false
+RUN yarn install --frozen-lockfile --production=false --ignore-engines
 
 COPY --chown=node:node ["script/build.js", "./script/build.js"]
 COPY --chown=node:node ["webpack/production.js", "./webpack/production.js"]
